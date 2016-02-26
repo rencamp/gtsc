@@ -22,7 +22,11 @@ http://reneecampanilla.com/gtsc/
 4. Push to the branch: `git push origin my-new-feature`
 5. Submit a pull request :D
 
+## Technologies used:
+1. Bootstrap
+2. JQuery
+
 ## License
 License: GPL2
 
-####Note: Developers are free to contribute to this project.
+#### Note: Developers are free to contribute to this project.
