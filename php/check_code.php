@@ -1,7 +1,7 @@
 <?php
 /**
  * Project Name: Guess The Secret Code Game
- * GitHub: https://github.com/rcampanilla/GTSC
+ * GitHub: https://github.com/rencamp/gtsc
  * Demo: http://reneecampanilla.com/gtsc/
  * Description: This is a simple project about guessing the secret code using HTML, CSS, JS, and PHP
  * Version: 1
