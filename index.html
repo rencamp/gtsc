@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Guess The Secret Code</title>
+  <meta charset="UTF-8">
+  <meta name="description" content="Simple Guess The Secret Code Game">
+  <meta name="keywords" content="HTML,CSS,XML,JavaScript,Hangman">
+  <meta name="author" content="Renee Campanilla">
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+  <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css"
+      rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+</head>
+<body>
+  <div class="container">
+  <div class="form-group col-md-7">
+    <h1>Hi there!</h1>
+    <div class="alert alert-warning" role="alert">Note: Please enter an uppercase or lowercase letter. Uppercase letters are different from lowercase letters since the secret code is case sensitive.</div>
+    <label for="secretcode_input">Guess the secret code:</label>
+    <input type="text" class="form-control" id="secretcode_input" placeholder="Enter a letter" maxlength="1">
+  </div>
+  <div class="form-group col-md-7">
+    <h2>Result:</h2>
+    <h4><span id="result"></span></h4>
+  </div>
+  <div class="form-group col-md-12">
+    <button type="button" class="btn btn-primary btn-lg" id="submit_button">Submit</button>
+  </div>
+  <div class="form-group col-md-12" id="letters_used">
+    <h4>Letters used:</h4>
+  </div>
+  <input type="text" id="letters" value="" hidden/>
+  </div>
+  <script src="js/main.js"></script>
+</body>
+</html>
