@@ -11,7 +11,19 @@
  * Developers are free to use and modify this project
  */
 
-$secretcode = "Grumpy Wizards make toxic brew for the Evil Queen and Jack"; //Change this to whatever code you desire
+/*Generate new code if cookie is not set*/
+if(!isset($_COOKIE['secretcode'])){
+
+	$response = file_get_contents('http://www.randomtext.me/api/lorem/p/4-5');
+	$json = json_decode($response,true);
+	$strings = str_replace(".</p>", '', $json['text_out']);
+	$strings = explode('<p>', $strings);
+	$code = array_pop($strings); //removes empty first element
+	setcookie('secretcode', $code, time() + (86400 * 30), "/");
+}
+
+$secretcode = $_COOKIE['secretcode'];
+// $secretcode = "Grumpy Wizards make toxic brew for the Evil Queen and Jack"; //Change this to whatever code you desire
 $code_array = str_split($secretcode); //split the string
 
 //Declare the code map, this will contain the status of each letter. 
@@ -48,15 +60,18 @@ if ( isset($_POST['letters']) && !empty($_POST['letters']) ) {
 	}
 
 	$result = "";
-
 	//This for-loop prepares the result based from the code_map
 	for ( $z = 0; $z < count($code_map); $z++ ) {
 		if ( $code_map[$z]['status'] == 'got_it' ) {
 			//Letter will be displayed if status is got_it
+
 			$result .= $code_map[$z]['letter'];
-		} else {
+		} 
+
+		else {
+
 			//A dash will be displayed if status is empty
-			$result .= "-";
+			$result .=  preg_match('/\s/', $code_map[$z]['letter']) ? " " : "-";
 		}
 	}
 
