@@ -12,6 +12,15 @@
 
 $(document).ready(function(){
 
+  //calls the php file to check if the user input has a match
+  $.ajax({
+    method: "GET",
+    url: "php/generate_code.php",
+  })
+    .done(function() {
+      //generated secret code
+  });
+
   var used_letters = [];
 
   $('#submit_button').click(function(){
@@ -35,8 +44,7 @@ $(document).ready(function(){
 
           //updates the letters used for the hidden input tag
           $('#letters').val($('#letters').val() + "," + letter);
-
-         
+          
           //appends the user input to "Letters used:"
           if (letter) {
 
@@ -52,8 +60,6 @@ $(document).ready(function(){
             $.removeCookie('secretcode', { path: '/' });
             location.reload(true); //parameter is necessary to reload from server, and not from cache.
           }
-
-
         }
       });
   });

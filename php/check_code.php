@@ -11,19 +11,16 @@
  * Developers are free to use and modify this project
  */
 
-/*Generate new code if cookie is not set*/
-if(!isset($_COOKIE['secretcode'])){
+$secretcode = "";
 
-	$response = file_get_contents('http://www.randomtext.me/api/lorem/p/4-5');
-	$json = json_decode($response,true);
-	$strings = str_replace(".</p>", '', $json['text_out']);
-	$strings = explode('<p>', $strings);
-	$code = array_pop($strings); //removes empty first element
-	setcookie('secretcode', $code, time() + (86400 * 30), "/");
+if ( isset($_COOKIE['secretcode']) ) {
+	$secretcode = $_COOKIE['secretcode'];
+} else {
+	//set default secret code if the generate_code.php failed
+	$secretcode = "Grumpy Wizards make toxic brew for the Evil Queen and Jack";
+	setcookie('secretcode', $secretcode, time() + (86400 * 30), "/");
 }
 
-$secretcode = $_COOKIE['secretcode'];
-// $secretcode = "Grumpy Wizards make toxic brew for the Evil Queen and Jack"; //Change this to whatever code you desire
 $code_array = str_split($secretcode); //split the string
 
 //Declare the code map, this will contain the status of each letter. 
