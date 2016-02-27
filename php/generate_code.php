@@ -1,7 +1,6 @@
 <?php
 /*Generate new secret code if cookie is not set*/
 if(!isset($_COOKIE['secretcode'])){
-
 	$response = file_get_contents('http://www.randomtext.me/api/lorem/p/4-5');
 	$json = json_decode($response,true);
 	$strings = str_replace(".</p>", '', $json['text_out']);
