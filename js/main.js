@@ -27,7 +27,7 @@ $(document).ready(function(){
     $.ajax({
       method: "POST",
       url: "php/check_code.php",
-      data: { letters: current_result }
+      data: { letters: current_result },
     })
       .done(function( msg ) { //the variable msg holds the returned string from the php file
         if ( msg ) {
@@ -36,11 +36,7 @@ $(document).ready(function(){
           //updates the letters used for the hidden input tag
           $('#letters').val($('#letters').val() + "," + letter);
 
-          //Replaces " " to "space"
-          if ( letter == " " ) {
-            letter = "space";
-          }
-
+         
           //appends the user input to "Letters used:"
           if (letter) {
 
@@ -50,6 +46,14 @@ $(document).ready(function(){
               $('#letters_used').append('<span class="btn btn-info">' + letter + '</span>');
             }
           }
+
+          if (msg.localeCompare($.cookie("secretcode")) > 0) {
+            alert('You have successfully guessed the word!');
+            $.removeCookie('secretcode', { path: '/' });
+            location.reload(true); //parameter is necessary to reload from server, and not from cache.
+          }
+
+
         }
       });
   });
