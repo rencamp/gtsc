@@ -17,14 +17,14 @@
     <h1>Hi there!</h1>
     <div class="alert alert-warning" role="alert">Note: Please enter an uppercase or lowercase letter. Uppercase letters are different from lowercase letters since the secret code is case sensitive.</div>
     <label for="secretcode_input">Guess the secret code:</label>
-    <input type="text" class="form-control" id="secretcode_input" placeholder="Enter a letter" maxlength="1">
+    <input type="text" class="form-control" id="secretcode_input" placeholder="Enter a letter" maxlength="1" autofocus>
+  </div>
+  <div class="form-group col-md-12">
+    <button type="button" class="btn btn-primary btn-lg" id="submit_button">Submit</button>
   </div>
   <div class="form-group col-md-7">
     <h2>Result:</h2>
     <h4><span id="result"></span></h4>
-  </div>
-  <div class="form-group col-md-12">
-    <button type="button" class="btn btn-primary btn-lg" id="submit_button">Submit</button>
   </div>
   <div class="form-group col-md-12" id="letters_used">
     <h4>Letters used:</h4>
